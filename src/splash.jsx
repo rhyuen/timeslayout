@@ -30,10 +30,6 @@ const SummaryContent = styled.div`
     border-bottom: 1px solid rgba(0,0,0,0.1);
 `;
 
-const Picture = styled.div`
-    background: lavender;
-    width: 50%;
-`;
 const PictureSubtitle = styled.div`
     width: 100%;    
     height: 4vh;
@@ -41,20 +37,29 @@ const PictureSubtitle = styled.div`
     bottom: -4vh;
     left: 0;
     text-align: right;    
-    font-size: 14px;
+    font-size: 13px;
     box-sizing: border-box;    
     padding: 1vh 1vh;
+    color: rgba(0,0,0,0.7);
 `;
 
-export default () => (
-    <SplashContainer>        
-       <Summary>
-        <SummaryHeader/>           
-        <SummaryContent>
-           <SummaryContentTitle/>
-        </SummaryContent>
-       </Summary>
-       <Picture></Picture>
-       <PictureSubtitle>A blurb of text for the picture subtitle goes here.</PictureSubtitle>
-    </SplashContainer>
-)
+export default ({pictureUrl}) => {
+    const Picture = styled.div`
+        background: lavender;   
+        background-image: url(${pictureUrl});
+        width: 50%;
+    `;
+
+    return (
+        <SplashContainer>        
+            <Summary>
+                <SummaryHeader/>           
+                <SummaryContent>
+                    <SummaryContentTitle/>
+                </SummaryContent>
+            </Summary>
+            <Picture></Picture>
+            <PictureSubtitle>A blurb of text for the picture subtitle goes here.</PictureSubtitle>
+        </SplashContainer>
+    );
+}

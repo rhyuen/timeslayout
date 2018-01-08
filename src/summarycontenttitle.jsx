@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import styled from "styled-components";
+import ShareBar from "./sharebar.jsx";
 
 const RootContainer = styled.div`
     width: 100%;
@@ -20,6 +21,7 @@ const SubTitle = styled.div`
     max-width: 66%;    
     font-family: "Times New Roman";   
     font-size: 18px;
+    color: rgba(0,0,0,0.7);
 `;
 const Author = styled.div`
     padding: 1vh;
@@ -27,15 +29,12 @@ const Author = styled.div`
     font-family: "Times New Roman";   
     font-size: 14px;
 `;
-const TagCloud = styled.div`
-    padding: 2vh;
-    max-width: 66%;    
-`;
+
 export default () => (
     <RootContainer>
         <Title>Summary title, a Summary.</Title>
         <SubTitle>Here lies a brief abstract of what will soon follow as you scroll down the page.  More words means the result is better because it's better.</SubTitle>
         <Author>By <strong>FirstName LastName</strong> {new Date().toLocaleString()}</Author>
-        <TagCloud>Share Bar</TagCloud>
+        <ShareBar/>
     </RootContainer>
 );

@@ -6,11 +6,21 @@ import styled from "styled-components";
 
 
 class App extends Component{
+    state = {
+        splashImage : ""
+    }
 
+    componentDidMount = () => {
+        const images = require.context("./images", false, /\.(png|jpg)/);
+        const usableImages = images.keys().map(images);        
+        this.setState(prevState =>(
+            {splashImage:usableImages[0]}
+        ));
+    }
     render(){
         return (
             <div className = "root">    
-                <Splash/>
+                <Splash pictureUrl = {this.state.splashImage} />
                 <Content/>      
                 <Footer/> 
             </div>

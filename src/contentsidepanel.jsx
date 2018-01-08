@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import styled from "styled-components";
+import content from "./data/content.json";
 
 const Root = styled.div`
     width: 35%;
@@ -15,29 +16,54 @@ const SideHeader = styled.div`
 `;
 
 const SideItem = styled.div`
-    width: 100%;
-    background: lightblue;   
+    width: 100%;    
     display: flex; 
-    margin-bottom: 2vh;
-
+    margin-bottom: 2vh;    
+    height: 8vh;
+    box-sizing: border-box;   
 `;
 const SideItemPic = styled.div`
-    width: 8vh;
-    height: 8vh;
-    background: lavender;
-    margin-right: 2vh;
+    box-sizing: border-box;    
+    width: 8vh;    
+    background: lavender;    
 `;
-const SideItemDetails = styled.div`
+const SideItemDetails = styled.div`     
+    max-width: 65%;
+    margin-left: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;       
+`;
+const DetailsSubject = styled.div`
+    text-transform: uppercase;
+    font-size: 13px;
+`;
+const DetailsTitle = styled.div`
+    font-size: 15px;
+    ${SideItem}:hover & {
+        text-decoration: underline;
+    }
+`;
+const DetailsDate = styled.div`
+    text.transform: uppercase;
+    color: rgba(0,0,0,0.4);
+    font-size: 13px;
 `;
 
 export default () => (
    <Root>
         <SideHeader>recommendations</SideHeader>
-        <SideItem>
-            <SideItemPic/>
-            <SideItemDetails>Category<br/>asdf<br/>{new Date().toLocaleString()}</SideItemDetails>            
-        </SideItem>
-        <SideItem><SideItemPic/>asdf</SideItem>
-        <SideItem>asdf</SideItem>
+        {
+            content.suggestions.map(sug => (
+                <SideItem>
+                    <SideItemPic/>
+                    <SideItemDetails>
+                        <DetailsSubject>{sug.subject}</DetailsSubject>
+                        <DetailsTitle>{sug.title}</DetailsTitle>
+                        <DetailsDate>{sug.date}</DetailsDate>
+                    </SideItemDetails>            
+                </SideItem>
+            ))        
+        }
    </Root>
 );
