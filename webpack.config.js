@@ -17,6 +17,9 @@ module.exports = {
         },{
             test: /\.json$/,
             loader: "json-loader"
+        }, {
+            test: /\.(png|jpg|gif)$/,
+            loader: "file-loader"
         }]
     },
     plugins: [
@@ -24,7 +27,7 @@ module.exports = {
             template: path.join(__dirname, "src/templates/index.html"),
             filename: "index.html",
             inject: "body",
-            title: "Financial Calculator"
+            title: "A layout"
         })
     ]
 };
